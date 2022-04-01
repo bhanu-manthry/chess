@@ -2,12 +2,21 @@
 <div id="chess-board">
   <table>
     <tr *ngFor="let row of uiBoard">
-      <td *ngFor="let spot of row">
-        <div *ngIf="spot.ascii">
-          {{spot.ascii}}
-        </div>
-        <div *ngIf="!spot.ascii">
-          &nbsp;
+      <td *ngFor="let item of row">
+        <div (click)="onSelect(item.spot)" class="piece">
+          <div class="loc">
+            ({{item.spot.x}}, {{item.spot.y}})
+            <div *ngIf="item.spot.marked">
+              M
+            </div>
+          </div>
+
+          <div *ngIf="item.ascii">
+            {{item.ascii}}
+          </div>
+          <div *ngIf="!item.ascii">
+            &nbsp;
+          </div>
         </div>
       </td>
     </tr>

@@ -8,15 +8,27 @@
     border: 1px solid black;
     tr:nth-child(even) td:nth-child(even),
     tr:nth-child(odd) td:nth-child(odd) {
-      background: #7fa650;
+      background: #b58763;
     }
     tr:nth-child(odd) td:nth-child(even),
     tr:nth-child(even) td:nth-child(odd) {
-      background: white;
+      background: #f0dab5;
     }
 
     td {
       text-align: center;
+    }
+  }
+
+  .piece {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+
+    .loc {
+      position: absolute;
+      font-size: 14px;
+      font-weight: bold;
     }
   }
 }

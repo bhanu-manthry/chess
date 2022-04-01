@@ -1,19 +1,32 @@
+import { Board } from "./board";
+import { Spot } from "./spot";
 
-export class PieceColor {
-  static white: true;
-  static black: false;
+export enum PieceColor {
+  black,
+  white
 }
 
 export abstract class Piece {
-  private _color: boolean;
+  private _color: PieceColor;
+  private _killed: boolean;
 
-  constructor(color: boolean) {
+  constructor(color: PieceColor) {
     this._color = color;
+    this._killed = false;
   }
 
-  get color(): boolean {
+  get color(): PieceColor {
     return this._color;
   };
 
-  abstract canMove(): boolean;
+  get killed(): boolean {
+    return this._killed;
+  }
+
+  set killed(killed: boolean) {
+    this._killed = killed;
+  }
+
+  abstract canMove(board: Board, start: Spot, end: Spot): boolean;
+  abstract getPossibleMoves(spot: Spot): Array<{x: number, y: number}>;
 }
