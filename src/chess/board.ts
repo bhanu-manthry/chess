@@ -1,62 +1,39 @@
-import { Bishop } from "./bishop";
-import { white, black } from "./constants";
-import { King } from "./king";
-import { Knight } from "./knight";
-import { Pawn } from "./pawn";
-import { Piece } from "./piece";
-import { Queen } from "./queen";
-import { Rook } from "./rook";
+import { PieceFactory } from "./PieceFactory";
 import { Spot } from "./spot";
 
-export class PieceFactory {
-  static getPiece(charCode: string): Piece | null {
-    switch (charCode) {
-      // all white pieces
-      case 'R': return new Rook(white);
-      case 'N': return new Knight(white);
-      case 'B': return new Bishop(white);
-      case 'Q': return new Queen(white);
-      case 'K': return new King(white);
-      case 'P': return new Pawn(white);
-
-      // all black pieces
-      case 'r': return new Rook(black);
-      case 'n': return new Knight(black);
-      case 'b': return new Bishop(black);
-      case 'q': return new Queen(black);
-      case 'k': return new King(black);
-      case 'p': return new Pawn(black);
-      case '': return null;
-      
-      default: throw new Error('Illegal Piece charCode');
-    }
-  }
-}
-
 export class Board {
-  private spots: any;
+  private spots: Spot[][] = new Array(8);
   private standardLayout = Object.freeze([
-    'r n b q k b n r',
-    'p p p p p p p p',
-    '               ',
-    '               ',
-    '               ',
-    '               ',
+    'R N B Q K B N R',
     'P P P P P P P P',
-    'R N B Q K B N R'
+    '               ',
+    '               ',
+    '               ',
+    '               ',
+    'p p p p p p p p',
+    'r n b q k b n r',
   ]);
 
-  public Board() {
-    this.spots = null;
+  public constructor() {
     this.resetBoard();
   }
 
-  public resetBoard() {
+  public resetBoard(): Spot[][] {
+    console.log('in reset board')
     for (let r = 0; r < 8; r++) {
+      this.spots[r] = new Array(8)
+      let rowPieces = this.standardLayout[r].split(' ');
       for (let c = 0; c < 8; c++) {
-        let piece = PieceFactory.getPiece(this.standardLayout[r][c])
+        console.log(r, c, rowPieces[c]);
+        let piece = PieceFactory.getPiece(rowPieces[c])
         this.spots[r][c] = new Spot(r, c, piece)
       }
     }
+
+    return this.spots;
+  }
+
+  public getCurrentBoard(): Spot[][] {
+    return this.spots;
   }
 }

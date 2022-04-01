@@ -1,0 +1,15 @@
+<p>board works!</p>
+<div id="chess-board">
+  <table>
+    <tr *ngFor="let row of uiBoard">
+      <td *ngFor="let spot of row">
+        <div *ngIf="spot.ascii">
+          {{spot.ascii}}
+        </div>
+        <div *ngIf="!spot.ascii">
+          &nbsp;
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
