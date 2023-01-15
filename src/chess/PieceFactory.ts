@@ -2,14 +2,14 @@ import { Bishop } from "./bishop";
 import { King } from "./king";
 import { Knight } from "./knight";
 import { Pawn } from "./pawn";
-import { Piece, PieceColor } from "./piece";
+import { Piece } from "./piece";
 import { Queen } from "./queen";
 import { Rook } from "./rook";
 
-
 export class PieceFactory {
   static getPiece(charCode: string): Piece | null {
-    const { white, black } = PieceColor;
+    const white = 'white';``
+    const black = 'black';
     switch (charCode) {
       // all white pieces
       case 'R': return new Rook(white);
@@ -26,6 +26,8 @@ export class PieceFactory {
       case 'q': return new Queen(black);
       case 'k': return new King(black);
       case 'p': return new Pawn(black);
+      
+      // '-' will be passed when there is no Piece in the Spot
       case '-': return null;
 
       default: throw new Error(`Illegal Piece Code "${charCode.toString()}"`);

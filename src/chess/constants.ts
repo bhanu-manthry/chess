@@ -1,19 +1,4 @@
 
-export const asciiPieces = {
-  black: {
-    rook: '♜',
-    knight: '♞',
-    bishop: '♝',
-    queen: '♛',
-    king: '♚',
-    pawn: '♟',
-  },
-  white: {
-    rook: '♖',
-    knight: '♘',
-    bishop: '♗',
-    queen: '♕',
-    king: '♔',
-    pawn: '♙',
-  }
-}
+export type PieceColor = 'black' | 'white';
+
+export type PieceType = 'rook' | 'knight' | 'bishop' | 'queen' | 'king' | 'pawn';

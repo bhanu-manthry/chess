@@ -1,22 +1,16 @@
-<p>board works!</p>
 <div id="chess-board">
   <table>
     <tr *ngFor="let row of uiBoard">
       <td *ngFor="let item of row">
         <div (click)="onSelect(item.spot)" class="piece">
           <div class="loc">
-            ({{item.spot.x}}, {{item.spot.y}})
+            <!-- ({{item.spot.x}}, {{item.spot.y}}) -->
             <div *ngIf="item.spot.marked">
               M
             </div>
           </div>
 
-          <div *ngIf="item.ascii">
-            {{item.ascii}}
-          </div>
-          <div *ngIf="!item.ascii">
-            &nbsp;
-          </div>
+          <img *ngIf="item.ascii" src="/assets/pieces/{{item.ascii}}" class="img-piece">
         </div>
       </td>
     </tr>

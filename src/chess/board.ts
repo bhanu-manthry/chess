@@ -4,14 +4,14 @@ import { Spot } from "./spot";
 export class Board {
   private boxes: Spot[][] = new Array(8);
   private standardLayout = Object.freeze([
-    'R N B Q K B N R',
-    'P P P P P P P P',
-    '- - - - - - - -',
-    '- - - - - - - -',
-    '- - - - - - - -',
-    '- - - - - - - -',
-    'p p p p p p p p',
     'r n b q k b n r',
+    'p p p p p p p p',
+    '- - - - - - - -',
+    '- - - - - - - -',
+    '- - - - - - - -',
+    '- - - - - - - -',
+    'P P P P P P P P',
+    'R N B Q K B N R',
   ]);
 
   public constructor() {
@@ -24,7 +24,6 @@ export class Board {
       this.boxes[r] = new Array(8)
       let rowPieces = this.standardLayout[r].split(' ');
       for (let c = 0; c < 8; c++) {
-        console.log(r, c, rowPieces[c]);
         let piece = PieceFactory.getPiece(rowPieces[c])
         this.boxes[r][c] = new Spot(r, c, piece)
       }

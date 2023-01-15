@@ -1,22 +1,16 @@
 #chess-board {
-  font-size: 60px;
-
   table {
-    width: 700px;
-    height: 700px;
+    // width: 700px;
+    // height: 700px;
     border-collapse: collapse;
     border: 1px solid black;
     tr:nth-child(even) td:nth-child(even),
     tr:nth-child(odd) td:nth-child(odd) {
-      background: #b58763;
+      background: #F0DEC7;
     }
     tr:nth-child(odd) td:nth-child(even),
     tr:nth-child(even) td:nth-child(odd) {
-      background: #f0dab5;
-    }
-
-    td {
-      text-align: center;
+      background: #B5876B;
     }
   }
 
@@ -24,11 +18,22 @@
     position: relative;
     cursor: pointer;
     user-select: none;
+    display: flex;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 
     .loc {
       position: absolute;
       font-size: 14px;
       font-weight: bold;
+    }
+
+    img {
+      width: 64px;
     }
   }
 }

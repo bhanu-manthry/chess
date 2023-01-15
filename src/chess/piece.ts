@@ -1,10 +1,6 @@
 import { Board } from "./board";
+import { PieceColor } from "./constants";
 import { Spot } from "./spot";
-
-export enum PieceColor {
-  black,
-  white
-}
 
 export abstract class Piece {
   private _color: PieceColor;
